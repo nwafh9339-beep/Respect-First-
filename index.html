@@ -41,6 +41,7 @@
         .card {
             background-color: var(--card-bg); border: 1px solid rgba(138, 43, 226, 0.2);
             padding: 30px 20px; border-radius: 15px; cursor: pointer; transition: 0.3s;
+            text-decoration: none; color: white;
         }
 
         .card:hover { border-color: var(--primary-purple); background-color: #151515; }
@@ -49,7 +50,6 @@
 
         .icon { font-size: 30px; color: var(--primary-purple); margin-bottom: 15px; display: block; }
 
-        /* تنسيق الإدارة */
         .admin-box { display: flex; justify-content: space-around; margin-top: 15px; flex-wrap: wrap; gap: 20px; }
         .admin-item { flex: 1; min-width: 150px; }
         .role-title { color: var(--primary-purple); font-size: 13px; font-weight: bold; margin-bottom: 5px; }
@@ -59,20 +59,23 @@
         .modal {
             display: none; position: fixed; z-index: 1000;
             left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.9);
+            background-color: rgba(0,0,0,0.95);
+            overflow-y: auto;
         }
 
         .modal-content {
-            background-color: #111; margin: 10% auto; padding: 30px;
-            border: 2px solid var(--primary-purple); width: 80%; max-width: 600px;
+            background-color: #111; margin: 5% auto; padding: 30px;
+            border: 2px solid var(--primary-purple); width: 85%; max-width: 700px;
             border-radius: 20px; position: relative; text-align: right;
         }
 
         .close-btn { position: absolute; left: 20px; top: 10px; color: #fff; font-size: 30px; cursor: pointer; }
 
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #333; padding: 12px; text-align: center; }
-        th { background-color: var(--dark-purple); }
+        .law-item { margin-bottom: 15px; border-right: 3px solid var(--primary-purple); padding-right: 15px; }
+        .law-title { font-weight: bold; color: var(--primary-purple); display: block; margin-bottom: 5px; }
+        .law-detail { font-size: 14px; color: #ccc; }
+
+        .forbidden-list { background: rgba(255, 0, 0, 0.1); padding: 10px; border-radius: 8px; border: 1px solid #ff000044; }
 
         .footer-info { margin-top: 40px; padding: 20px; color: #666; font-size: 13px; line-height: 1.6; border-top: 1px solid #1a1a1a; }
     </style>
@@ -86,15 +89,15 @@
         <button class="hero-btn" onclick="alert('سيتم فتح نموذج التقديم قريباً...')">📝 تقديم الرقابة (الخبرات والعمر)</button>
 
         <div class="grid-layout">
-            <div class="card" onclick="openModal('bandsModal')">
-                <span class="icon">🚫</span>
-                <span style="font-weight:700">نظام الباندات</span>
+            <div class="card" onclick="openModal('lawsModal')">
+                <span class="icon">⚖️</span>
+                <span style="font-weight:700">قوانين الرقابة</span>
             </div>
 
-            <div class="card" onclick="openModal('scheduleModal')">
+            <a href="https://docs.google.com/spreadsheets/d/1VtN3veoyz6LpHFHvvn6XZGgb2ciLttjcHpt1-En5ois/edit?usp=sharing" target="_blank" class="card">
                 <span class="icon">📅</span>
                 <span style="font-weight:700">جدول الرقابة</span>
-            </div>
+            </a>
 
             <div class="card card-wide">
                 <div style="background: rgba(138, 43, 226, 0.1); display: inline-block; padding: 2px 15px; border-radius: 5px; font-size: 12px; color: var(--primary-purple); margin-bottom: 15px;">طاقم إدارة الرقابة</div>
@@ -117,32 +120,54 @@
 
         <div class="footer-info">
             <strong>تعريف الرقابة:</strong><br>
-            نظام تقني وإداري يهدف لضمان جودة الأداء داخل Respect First، ومتابعة الالتزام بالقوانين لضمان بيئة آمنة ومنظمة لجميع الأعضاء.
+            المراقب يمثل إدارة السيرفر لذلك يجب أن يكون مثالاً في الالتزام بالقوانين وضمان بيئة آمنة ومنظمة لجميع الأعضاء.
         </div>
     </div>
 
-    <div id="bandsModal" class="modal">
+    <div id="lawsModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('bandsModal')">&times;</span>
-            <h2 style="color:var(--primary-purple)">🚫 نظام الباندات</h2>
-            <p>قوانين الباندات والجزاءات الإدارية الخاصة بـ Respect First:</p>
-            <ul>
-                <li>مخالفة بسيطة: تنذير أولي.</li>
-                <li>تكرار المخالفة: باند لمدة 24 ساعة.</li>
-                <li>مخالفة جسيمة: باند نهائي وسحب رتب.</li>
-            </ul>
-        </div>
-    </div>
+            <span class="close-btn" onclick="closeModal('lawsModal')">&times;</span>
+            <h2 style="color:var(--primary-purple); border-bottom: 1px solid #333; padding-bottom: 10px;">⚖️ قوانين الرقابة الإدارية</h2>
+            
+            <div class="law-item">
+                <span class="law-title">الحياد التام</span>
+                <span class="law-detail">يجب على المراقب أن يكون محايدًا بين جميع اللاعبين، ويمنع إعطاء مميزات أو تفضيل لأصدقاء أو أعضاء عصابة معينة.</span>
+            </div>
 
-    <div id="scheduleModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('scheduleModal')">&times;</span>
-            <h2 style="color:var(--primary-purple)">📅 جدول الرقابة</h2>
-            <table>
-                <tr><th>الفترة</th><th>المراقب المسؤول</th></tr>
-                <tr><td>المسائية</td><td>يحدد لاحقاً</td></tr>
-                <tr><td>الفجر</td><td>يحدد لاحقاً</td></tr>
-            </table>
+            <div class="law-item">
+                <span class="law-title">عدم استغلال الصلاحيات</span>
+                <span class="law-detail">يمنع استغلال الرتبة أو الصلاحيات الإدارية لأغراض شخصية.</span>
+            </div>
+
+            <div class="law-item">
+                <span class="law-title">التعامل باحترام</span>
+                <span class="law-detail">التعامل مع اللاعبين بأدب واحترام حتى لو كانوا مخطئين، ويمنع منعاً باتاً السب أو الاستهزاء.</span>
+            </div>
+
+            <div class="law-item">
+                <span class="law-title">الأدلة قبل العقوبة</span>
+                <span class="law-detail">لا يتم تبنيد / كيك / تحذير أي لاعب بدون دليل واضح (فيديو أو صور). يجب كتابة سبب العقوبة في اللوق أو الديسكورد.</span>
+            </div>
+
+            <div class="law-item">
+                <span class="law-title">عدم التدخل في الرول بلاي</span>
+                <span class="law-detail">يمنع التدخل في الأحداث إلا في حال وجود مخالفة واضحة.</span>
+            </div>
+
+            <div class="law-item">
+                <span class="law-title">السرية التامة</span>
+                <span class="law-detail">يمنع تسريب معلومات الإدارة أو الشكاوى خارج النطاق الإداري.</span>
+            </div>
+
+            <div class="law-item forbidden-list">
+                <span class="law-title" style="color: #ff4d4d;">🚫 يمنع استخدام الصلاحيات التالية دون سبب إداري:</span>
+                <span class="law-detail" style="color: #eee;">Teleport • Revive • Spawn • Ban • Warn</span>
+            </div>
+
+            <div class="law-item" style="margin-top: 15px;">
+                <span class="law-title">النشاط والمتابعة</span>
+                <span class="law-detail">يجب أن يكون المراقب نشطًا ويتابع الشكاوى وتقارير اللاعبين بشكل مستمر.</span>
+            </div>
         </div>
     </div>
 
