@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respect First - نظام الرقابة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #8a2be2; /* بنفسجي زاهي */
+            --dark-purple: #4b0082;
+            --bg-black: #050505;
+            --card-bg: #0f0f0f;
+            --text-white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 50px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .header-section {
+            margin-bottom: 50px;
+        }
+
+        .brand-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-purple);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        .portal-title {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* الزر الأول البارز (التقديم) */
+        .hero-btn {
+            display: block;
+            width: 100%;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--dark-purple));
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 20px;
+            border: none;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+            transition: 0.3s;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.5);
+        }
+
+        /* شبكة الأقسام */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--primary-purple);
+            background-color: #151515;
+        }
+
+        .card-wide {
+            grid-column: span 2;
+        }
+
+        .icon {
+            font-size: 30px;
+            color: var(--primary-purple);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .card-desc {
+            font-size: 12px;
+            color: #777;
+            margin-top: 8px;
+        }
+
+        /* قسم التعريف السفلي */
+        .footer-info {
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid #222;
+            font-size: 13px;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        .status-tag {
+            display: inline-block;
+            padding: 2px 10px;
+            background: rgba(138, 43, 226, 0.1);
+            color: var(--primary-purple);
+            border-radius: 5px;
+            font-size: 11px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-section">
+            <h1 class="brand-name">RESPECT FIRST</h1>
+            <div class="portal-title">نظام الرقابة والإدارة الموحد</div>
+        </div>
+
+        <a href="#" class="hero-btn">
+            📝 تقديم الرقابة (الخبرات والعمر)
+        </a>
+
+        <div class="grid-layout">
+            <a href="#" class="card">
+                <span class="icon">🚫</span>
+                <span class="card-title">نظام الباندات</span>
+                <span class="card-desc">قوانين العقوبات واللوائح</span>
+            </a>
+
+            <a href="#" class="card">
+                <span class="icon">📅</span>
+                <span class="card-title">جدول الرقابة</span>
+                <span class="card-desc">توزيع الفترات والمهام</span>
+            </a>
+
+            <div class="card card-wide">
+                <div class="status-tag">إدارة الرقابة</div>
+                <div class="grid-layout" style="grid-template-columns: 1fr 1fr 1fr; border: none; padding: 0;">
+                    <div>
+                        <div style="font-size: 14px; color: var(--primary-purple);">المسؤول</div>
+                        <div style="font-weight: bold;">[اسم المسؤول]</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 14px; color: var(--primary-purple);">النائب</div>
+                        <div style="font-weight: bold;">[اسم النائب]</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 14px; color: var(--primary-purple);">المشرفين</div>
+                        <div style="font-size: 12px;">[قائمة المشرفين]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            <strong>تعريف الرقابة:</strong><br>
+            نظام تقني وإداري يهدف لضمان جودة الأداء داخل Respect First، ومتابعة الالتزام بالقوانين لضمان بيئة آمنة ومنظمة لجميع الأعضاء.
+            <br><br>
+            <span style="font-size: 10px;">RESPECT FIRST MANAGEMENT SYSTEM • 2026</span>
+        </div>
+    </div>
+
+</body>
+</html>
